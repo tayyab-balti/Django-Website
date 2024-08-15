@@ -1,14 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Image Segmentation App</title>
-</head>
-<body>
-    <h1>Welcome to Image Segmentation App</h1>
-    <form method="post" enctype="multipart/form-data">
+{% extends 'segmentation_app/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section id="upload-section">
+    <h2>Welcome to the Image Segmentation Application!</h2>
+    <form action="{% url 'home' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Upload Image</button>
     </form>
-</body>
-</html>
+    <p>Drag and drop an image or click to select a file.<br>Supported formats: JPG, PNG, BMP.</p>
+</section>
+
+<section id="example-images">
+    <h3>Example Images:</h3>
+    <div class="image-comparison">
+        <div>
+            <h4>Example 1</h4>
+            <img src="{% static 'images\Original-image-and-segmented-image.png' %}" alt="Hand Gesture">
+        </div>
+        <div>
+            <h4>Example 2</h4>
+            <img src="{% static 'images/example1.png' %}" alt="Buffalo Segmentation">
+        </div>
+    </div>
+</section>
+{% endblock %}
