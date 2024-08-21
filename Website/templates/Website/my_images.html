@@ -1,0 +1,27 @@
+<!-- Website/templates/Website/my_images.html -->
+{% extends 'Website/base.html' %}
+{% load static %}
+
+{% block content %}
+<section id="image-comparison">
+    <h2>My Segmented Images</h2>
+    <div class="image-comparison">
+        <div>
+            <h3>Original Image</h3>
+            <img src="{% static 'images/original_image.jpg' %}" alt="Original Image">
+            <br><br>
+            <a href="{% url 'download_original' %}" class="btn btn-primary">Download Original</a>
+        </div>
+        <div>
+            <h3>Segmented Image</h3>
+            <img src="{% static 'images/segmented_image.jpg' %}" alt="Segmented Image">
+            <br><br>
+            <a href="{% url 'download_segmented' %}" class="btn btn-primary">Download Segmented</a>
+        </div>
+    </div>
+    <div class="performance-metrics">
+        <p>Processing Time: 0.45s</p>
+        <p>Accuracy: 98.5%</p>
+    </div>
+</section>
+{% endblock %}
